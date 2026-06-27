@@ -1,8 +1,8 @@
-# shadeDB
-![PyPI - Version](https://img.shields.io/pypi/v/shadeDB?color=blue&label=PyPI)
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/shadeDB?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/shadeDB)
+# shadecrypt
+![PyPI - Version](https://img.shields.io/pypi/v/shadecrypt?color=blue&label=PyPI)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/shadecrypt?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/shadecrypt)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos%20%7C%20windows%20%7C%20android-lightgrey)
-![License](https://img.shields.io/pypi/l/shadeDB?color=yellow)
+![License](https://img.shields.io/pypi/l/shadecrypt?color=yellow)
 <a href = "https://facebook.com/harkerbyte">![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=flat&logo=Facebook&logoColor=white)</a>
 <a href ="https://youtube.com/@harkerbyte?si=aPSIREosLJlFOmyX" >![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=flat&logo=YouTube&logoColor=white)</a>
 <a href="https://whatsapp.com/channel/0029Vb5f98Z90x2p6S1rhT0S">![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white)</a>
@@ -13,9 +13,9 @@
 [♟️ Mission](https://harkerbyte.github.io/portfolio/)
 
 
-🚀 **shadeDB**, also know as **shadecrypt**, is a lightweight, multipurpose **CLI + Python database server** — small enough to run anywhere, yet powerful enough to manage structured data with speed and simplicity.  
+🚀 **shadecrypt**, also know as **shadeDB beta**, is a lightweight, multipurpose **CLI + api database server** — small enough to run anywhere, yet powerful enough to manage structured data with speed and simplicity.  
 
-Unlike traditional file-based CLIs, shadeDB works more like Redis:  
+Unlike traditional file-based CLIs, shadecrypt works more like Redis:  
 
 - You **initialize once** → a background server process holds the live database in memory.  
 - All future CLI commands (`put`, `get`, `update`, etc.) talk to that server via a local socket.  
@@ -25,22 +25,22 @@ Unlike traditional file-based CLIs, shadeDB works more like Redis:
 
 ## ✨ Features
 
-- **Class-oriented design** — core database logic is in the `shadeDB` class.  
+- **Class-oriented design** — core database logic is in the `shadecrypt` class.  
 - **Persistent workflow** — one live server handles all operations.  
 - **Background persistence** — in-memory with disk persistence.  
 - **Portable** — runs on Linux, macOS, Windows, Android (via Termux).  
 - **Multipurpose CLI** — simple commands: `init`, `start`, `use`, `pull`, `get`, `update`, `remove`, `ls`, `stop`.  
-- **Config-aware** — automatically tracks the “current” DB in `~/.shadeDB/config.scdb`.  
+- **Config-aware** — automatically tracks the “current” DB in `~/.shadecrypt/config.scdb`.  
 
 ---
 
 ## 🔧 Installation
 
 ```bash
-pip install shadeDB
+pip install shadecrypt
 ```
 
-After install, the `shadeDB` command is available globally. A shorter keyword for shadeDB  - **scdb**
+After install, the `shadecrypt` command is available globally. A shorter keyword for shadecrypt  - **scdb**
 
 ---
 
@@ -49,33 +49,33 @@ After install, the `shadeDB` command is available globally. A shorter keyword fo
 ### 1. Initialize a database  
 Creates `./mydb.scdb`, starts the server, and sets it as default:  
 ```bash
-shadeDB init ./mydb.scdb backup
+shadecrypt init ./mydb.scdb backup
 ```
 ⚠️ Only provide the "backup" argument if you intend for the server to register newer backups as you make new changes. 
 ---
 ### 2. Start database server
 This is necessary, as the cli wrapper only communicates with the database server to retrieve,update,remove and store data.
 ```bash
-shadeDB start
+shadecrypt start
 ```
 ---
 
 ### 3. Insert data  
 ```bash
-shadeDB update alice.age 17 && scdb update alice.gender female
+shadecrypt update alice.age 17 && scdb update alice.gender female
 ```
 ---
 
 ### 4. Fetch data  
 ```bash
-shadeDB get alice
+shadecrypt get alice
 # {"nickname": "Shade", "status": "active"}
 ```
 ---
 
 ### 5. Nested access  
 ```bash
-shadeDB pull alice.nickname
+shadecrypt pull alice.nickname
 # "Shade"
 ```
 
@@ -83,26 +83,26 @@ shadeDB pull alice.nickname
 Making single value updates, it is compulsory to surround with double quotes.
 ### 6. Update  
 ```bash
-shadeDB update alice "my name is alice"
+shadecrypt update alice "my name is alice"
 ```
 
 ---
 
 ### 7. Remove  
 ```bash
-shadeDB remove alice 
+shadecrypt remove alice 
 # deletes {"nickname":"shade","status":"active"}
 ```
 ### 8. Remove nested 
 ```bash
-shadeDB remove alice.nickname
+shadecrypt remove alice.nickname
 # deletes {"nickname":"shade"} 
 ````
 ---
 
 ### 9. Check for the current database
 ```bash
-shadeDB ls
+shadecrypt ls
 # ./mysql.scsb
 ```
 
@@ -110,7 +110,7 @@ shadeDB ls
 
 ### 10. Switch database
 ```bash
-shadeDB use ./backup.scdb backup
+shadecrypt use ./backup.scdb backup
 # Only provide the backup argument, if it need arises.
 ```
 
@@ -118,20 +118,20 @@ shadeDB use ./backup.scdb backup
 
 ### 11. Stop server  
 ```bash
-shadeDB stop
+shadecrypt stop
 ```
 
 ---
 
 ## 📚 Python API  
 
-shadeDB can also be embedded directly into Python apps using the `shadeDB` class.  
+shadecrypt can also be embedded directly into Python apps using the `shadecrypt` class.  
 
 ### 🔧 Initialize  
 ```python
-from shadeDB.core import shadeDB
+from shadecrypt.core import shadecrypt
 
-db = shadeDB(
+db = shadecrypt(
     file="./data.scdb",
     write=True,
     id=True,
@@ -171,9 +171,9 @@ db.__performance__()      # Performance stats
 ## ⚡ Example Workflow  
 
 ```python
-from shadeDB.core import shadeDB
+from shadecrypt.core import shadecrypt
 
-db = shadeDB("./appdata.scdb", write=True)
+db = shadecrypt("./appdata.scdb", write=True)
 
 # Insert
 db.update(("alice", {"nickname": "Shade", "status": "active"}))
@@ -218,7 +218,7 @@ print(db.export_dict())
 
 
 ### 🔮 Few hints on what's to come in future updates
-- **Remote mode** → optional TCP listener so shadeDB can be queried from another device (like Redis-lite networking).
+- **Remote mode** → optional TCP listener so shadecrypt can be queried from another device (like Redis-lite networking).
 - **Replication/Sync** → lightweight push/pull sync between devices.
 - **Faster query returns** → implement a new algorithm to speed up query processing.
 - **Custom encryption algorithm** → device based encryption algorithm.

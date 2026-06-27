@@ -1,23 +1,23 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="shadeDB",
-    version="0.2.8",
+    name="shadecrypt",
+    version="0.2.9",
     description="A lightweight, class-oriented database server with a CLI wrapper for instant querying on any device.Store, update, fetch, and remove structured data with a single command. Designed for speed and simplicity, it’s perfect for embedded systems, mobile devices, developer tools, and quick local services.",
     author="Shade",
     author_email="adesolasherifdeen3@gmail.com",
     entry_points={
         "console_scripts": [
-          "shadeDB=shadeDB.cli:main",
-          "scdb=shadeDB.cli:main"
+          "shadecrypt=shadecrypt.cli:main",
+          "scdb=shadecrypt.cli:main"
         ]
     },
     include_package_data=True,
+    packages=["shadecrypt"],
     python_requires='>=3.8',
     license="MIT",
     classifiers=[
       "Programming Language :: Python :: 3",
-      "License :: OSI Approved :: MIT License",
       "Environment :: Console",
       "Intended Audience :: Developers",
       "Topic :: Database :: Database Engines/Servers",
