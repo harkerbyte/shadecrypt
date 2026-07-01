@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="shadecrypt",
-    version="0.2.9",
+    version="0.3.10",
     description="A lightweight, class-oriented database server with a CLI wrapper for instant querying on any device.Store, update, fetch, and remove structured data with a single command. Designed for speed and simplicity, it’s perfect for embedded systems, mobile devices, developer tools, and quick local services.",
     author="Shade",
     author_email="adesolasherifdeen3@gmail.com",
@@ -28,7 +28,7 @@ setup(
         "Whatsapp" : "https://whatsapp.com/channel/0029Vb5f98Z90x2p6S1rhT0S",
         "Youtube" : "https://youtube.com/@harkerbyte",
         "Instagram": "https://instagram.com/harkerbyte",
-        "X" : "https://x.com/shade_ofx"
+        "X" : "https://x.com/shade_ofc"
     },
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",

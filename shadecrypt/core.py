@@ -1,6 +1,6 @@
 import os,re,threading,time,random,string
-from shadeDB.schedule import Work
-from shadeDB.exceptions import *
+from shadecrypt.schedule import Work
+from shadecrypt.exceptions import *
 
 hologram = """\x1b[1;34m
 Dev : shade\n
@@ -18,9 +18,9 @@ Guaranteed 96.1% uptime,while query returns in milliseconds.
 
 Keep instance alive to avoid compile time delays except in case of importing an already existing DB instance.
 
-Documentation : https://github.com/harkerbyte/shadeDB\x1b[1;0m
+Documentation : https://github.com/harkerbyte/shadecrypt\x1b[1;0m
 """
-class shadeDB:
+class shadecrypt:
   def __init__(self,file:str,write:bool=True,id:bool=True,backup:bool=False,silent:bool=False):
     self.file = file
     self.write = write

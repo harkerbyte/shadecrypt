@@ -1,6 +1,6 @@
 import socket,pickle,threading,random,string,datetime
-from shadeDB.core import shadeDB
-from shadeDB.__init__ import instance
+from shadecrypt.core import shadecrypt
+from shadecrypt.__init__ import instance
 red = '\x1b[1;31m'
 green = '\x1b[1;32m'
 plain = '\x1b[1;0m'
@@ -18,7 +18,7 @@ def asc(port):
 Want some more? google search for 'harkerbyte'
 
 {blue}S{plain}hadecrypt  server is up and running 
-{blue}L{plain}istening on 127.0.0.1:{port}
+{blue}L{plain}istening on 0.0.0.0:{port}
 {green}R{plain}eady for connections 
 {yellow}D{plain}o not forget this is a beta version
 
@@ -41,13 +41,13 @@ def is_true(new,comp):
   
 def server(db_path,backup,port=8382):
     shutdown = False
-    db = shadeDB(db_path, backup=backup,silent=True)
+    db = shadecrypt(db_path, backup=backup,silent=True)
     dead_key = "".join(random.choice(string.ascii_letters+string.digits) for _ in range(8))
     admin_key = "".join(random.choice(string.ascii_letters+string.digits) for _ in range(24))
     instance.update(('token',dead_key))
     instance.update(('admin_token',admin_key))
     with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
-      s.bind(('127.0.0.1',int(port)))
+      s.bind(('0.0.0.0',int(port)))
       s.listen(2)
       print(asc(port))
       instance.update(('port',port))
